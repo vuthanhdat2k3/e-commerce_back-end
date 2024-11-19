@@ -58,12 +58,17 @@ public class VNPAYConfig {
         vnpParamsMap.put("vnp_Locale", LOCALE);
         vnpParamsMap.put("vnp_ReturnUrl", vnp_ReturnUrl);
 
-        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone(TIMEZONE));
+        // Tạo định dạng ngày giờ với timezone
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
+        formatter.setTimeZone(TimeZone.getTimeZone(TIMEZONE));
+
+        // Lấy thời gian hiện tại với timezone "Asia/Ho_Chi_Minh"
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone(TIMEZONE));
         String vnpCreateDate = formatter.format(calendar.getTime());
         vnpParamsMap.put("vnp_CreateDate", vnpCreateDate);
 
-        calendar.add(Calendar.MINUTE, 60); // Thêm 60 phút cho vnp_ExpireDate
+        // Thêm 60 phút cho vnp_ExpireDate
+        calendar.add(Calendar.MINUTE, 60);
         String vnp_ExpireDate = formatter.format(calendar.getTime());
         vnpParamsMap.put("vnp_ExpireDate", vnp_ExpireDate);
 
