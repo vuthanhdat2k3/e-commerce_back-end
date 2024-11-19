@@ -68,7 +68,7 @@ public class PaymentControllerVNPay {
             // Thực hiện xử lý callback
             processPaymentCallback(request, order);
             // Chuyển hướng về trang cửa hàng nếu thanh toán thành công
-            String redirectUrl = String.format("http://localhost:3000/checkout?step=3&order_id=%d", orderId); // Thay bằng URL trang shop của bạn
+            String redirectUrl = String.format("https://n09-ecommerce.vercel.app/checkout?step=3&order_id=%d", orderId); // Thay bằng URL trang shop của bạn
             response.sendRedirect(redirectUrl);
 
             return new ResponseObject<>(HttpStatus.OK, "Payment processed successfully.", null);
